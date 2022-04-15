@@ -19,7 +19,7 @@ ninja -C build install install-runtimes
 
 # compile and install wasi-libc
 cd ${SRC}/wasi-libc
-make -j256 CC=${INST}/bin/clang
+make -j256 CC=${INST}/bin/clang AR=${INST}/bin/llvm-ar NM=${INST}/bin/llvm-nm
 cp -av sysroot/* ${INST}
 
 # link "baremetal" compiler runtime to platform-specific compiler runtime
