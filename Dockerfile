@@ -11,7 +11,10 @@ RUN apt-get update && apt-get install -y \
   libclang-dev \
   libcrypto++-dev \
   lld \
-  sudo
+  sudo \
+  libbz2-dev \
+  liblzma-dev \
+  lzma-dev
 
 ENV HOME=/home
 
