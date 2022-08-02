@@ -25,4 +25,4 @@ cp -av sysroot/* ${INST}
 # link "baremetal" compiler runtime to platform-specific compiler runtime
 # (clang's "runtimes" build system can only make a "baremetal" compiler-runtime, but clang itself looks for the platform-specific build)
 mkdir -p ${INST}/lib/clang/16.0.0/lib/wasi
-ln -s ${INST}/lib/clang/15.0.0/lib/wasm32-wasi/libclang_rt.builtins.a ${INST}/lib/clang/16.0.0/lib/wasi/libclang_rt.builtins-wasm32.a
+ln -s ${INST}/lib/clang/16.0.0/lib/wasm32-wasi/libclang_rt.builtins.a ${INST}/lib/clang/16.0.0/lib/wasi/libclang_rt.builtins-wasm32.a
