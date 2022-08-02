@@ -30,7 +30,7 @@ jobs:
             file: ./Dockerfile
             builder: ${{ steps.buildx.outputs.name }}
             push: true
-            tags: ghcr.io/fixpointos/wasm_toolchain_docker:latest
+            tags: ghcr.io/fix-project/wasm_toolchain_docker:latest
             cache-from: type=local,src=/tmp/.buildx-cache
             cache-to: type=local,dest=/tmp/.buildx-cache-new
         - name: Move cache

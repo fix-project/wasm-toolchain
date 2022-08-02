@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 ENV HOME=/home
 
 RUN cd $HOME && \
-    git clone https://github.com/fixpointOS/wasm-toolchain.git && \
+    git clone https://github.com/fix-project/wasm-toolchain.git && \
     cd wasm-toolchain && \
     git submodule update --init && \
     ./build.sh && \
