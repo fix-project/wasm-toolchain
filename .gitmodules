@@ -4,3 +4,6 @@
 [submodule "wasi-libc"]
 	path = wasi-libc
 	url = https://github.com/WebAssembly/wasi-libc.git
+[submodule "wasix"]
+	path = wasix
+	url = git@github.com:yhdengh/wasix.git
