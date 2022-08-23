@@ -6,4 +6,4 @@
 	url = https://github.com/WebAssembly/wasi-libc.git
 [submodule "wasix"]
 	path = wasix
-	url = git@github.com:yhdengh/wasix.git
+	url = https://github.com/fix-project/wasix.git
