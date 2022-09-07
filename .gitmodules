@@ -7,3 +7,6 @@
 [submodule "wasix"]
 	path = wasix
 	url = https://github.com/fix-project/wasix.git
+[submodule "wabt"]
+	path = wabt
+	url = https://github.com/fix-project/wabt
