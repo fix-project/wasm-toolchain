@@ -10,3 +10,6 @@
 [submodule "wabt"]
 	path = wabt
 	url = https://github.com/fix-project/wabt
+[submodule "wasm-tools"]
+	path = wasm-tools
+	url = https://github.com/fix-project/wasm-tools.git

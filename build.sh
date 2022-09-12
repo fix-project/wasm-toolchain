@@ -5,6 +5,16 @@ SRC_REL=`dirname $0`
 SRC=`realpath ${SRC_REL}`
 INST=${SRC}/sysroot
 
+# compile wabt
+cd ${SRC}/wabt
+cmake -S . -B build/ -DBUILD_TESTS=OFF
+cmake --build build/ --parallel $(nproc)
+
+# compile wasm-tools
+cd ${SRC}/wasm-tools
+cmake -S . -B build/ -DBUILD_TESTS=OFF
+cmake --build build/ --parallel $(nproc)
+
 # install wasi-libc headers
 mkdir ${INST}
 cd ${SRC}/wasi-libc
@@ -41,8 +51,3 @@ make install
 # (clang's "runtimes" build system can only make a "baremetal" compiler-runtime, but clang itself looks for the platform-specific build)
 mkdir -p ${INST}/lib/clang/16.0.0/lib/wasi
 ln -s ${INST}/lib/clang/16.0.0/lib/wasm32-wasi/libclang_rt.builtins.a ${INST}/lib/clang/16.0.0/lib/wasi/libclang_rt.builtins-wasm32.a
-
-# compile wabt
-cd ${SRC}/wabt
-cmake -S . -B build/
-cmake --build build/ --parallel $(nproc)

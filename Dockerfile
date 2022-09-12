@@ -18,7 +18,7 @@ ENV HOME=/home
 RUN cd $HOME && \
     git clone https://github.com/fix-project/wasm-toolchain.git && \
     cd wasm-toolchain && \
-    git submodule update --init && \
+    git submodule update --init --recursive && \
     ./build.sh && \
     rm -rf llvm-project && \
     rm -rf wasi-libc
