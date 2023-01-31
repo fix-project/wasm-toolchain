@@ -37,10 +37,10 @@ ninja -C build clang-tblgen
 cp build/bin/clang-tblgen ${INST}/bin/clang-tblgen
 
 # compile clang for local sys
-mkdir ${INSTSYS}
-cmake -S llvm -B build-sys -G Ninja -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld" -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi" -DCMAKE_INSTALL_PREFIX=${INSTSYS} -DCMAKE_BUILD_TYPE=Release
-ninja -C build-sys runtimes
-ninja -C build-sys install install-runtimes
+cmake -S llvm -B ../build-sys -G Ninja -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGET_ARCH=x86_64 -DLLVM_DEFAULT_TARGET_TRIPLE=x86_64-pc-linux-gnu -DLLVM_TARGETS_TO_BUILD="X86" -DLLVM_ENABLE_THREADS:BOOL=OFF -DLLVM_INCLUDE_TESTS:BOOL=OFF -DLLVM_INCLUDE_EXAMPLES:BOOL=OFF -DLLVM_INCLUDE_UTILS:BOOL=OFF -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF
+ninja -C ../build-sys clangFrontend clangDriver clangSerialization clangParse clangCodeGen clangSema clangAnalysis clangEdit clangAST clangLex clangBasic
+ninja -C ../build-sys LLVMX86AsmParser LLVMX86CodeGen LLVMX86Desc LLVMX86Disassembler LLVMX86Info LLVMX86TargetMCA
+ninja -C ../build-sys lldELF lldCommon LLVMWindowsManifest
 
 # compile and install wasi-libc
 cd ${SRC}/wasi-libc
@@ -58,6 +58,3 @@ make install
 # (clang's "runtimes" build system can only make a "baremetal" compiler-runtime, but clang itself looks for the platform-specific build)
 mkdir -p ${INST}/lib/clang/16.0.0/lib/wasi
 ln -s ${INST}/lib/clang/16.0.0/lib/wasm32-wasi/libclang_rt.builtins.a ${INST}/lib/clang/16.0.0/lib/wasi/libclang_rt.builtins-wasm32.a
-
-mkdir -p ${INSTSYS}/lib/clang/16.0.0/lib/linux
-ln -s ${INSTSYS}/lib/clang/16.0.0/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a ${INSTSYS}/lib/clang/16.0.0/lib/linux/libclang_rt.builtins-x86_64.a
