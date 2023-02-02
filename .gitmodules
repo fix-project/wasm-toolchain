@@ -1,6 +1,6 @@
 [submodule "llvm-project"]
 	path = llvm-project
-	url = https://github.com/llvm/llvm-project.git
+	url = https://github.com/fixpointOS/llvm-project.git
 [submodule "wasi-libc"]
 	path = wasi-libc
 	url = https://github.com/fix-project/wasi-libc.git

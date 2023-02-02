@@ -4,7 +4,6 @@
 SRC_REL=`dirname $0`
 SRC=`realpath ${SRC_REL}`
 INST=${SRC}/sysroot
-INSTSYS=${SRC}/sys-sysroot
 
 # compile wabt
 cd ${SRC}/wabt
