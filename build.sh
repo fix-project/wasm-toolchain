@@ -43,6 +43,7 @@ ninja -C ../build-sys clangFrontend clangDriver clangSerialization clangParse cl
 ninja -C ../build-sys LLVMX86AsmParser LLVMX86CodeGen LLVMX86Desc LLVMX86Disassembler LLVMX86Info LLVMX86TargetMCA
 ninja -C ../build-sys lldELF lldCommon LLVMWindowsManifest
 ninja -C ../build-sys install-clang-resource-headers
+ninja -C ../build-sys clang-format
 
 # compile and install wasi-libc
 cd ${SRC}/wasi-libc

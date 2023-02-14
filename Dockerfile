@@ -20,5 +20,4 @@ RUN cd $HOME && \
     cd wasm-toolchain && \
     git submodule update --init --recursive && \
     ./build.sh && \
-    rm -rf llvm-project && \
     rm -rf wasi-libc
