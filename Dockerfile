@@ -1,6 +1,6 @@
 FROM ubuntu:22.10
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade && apt-get install -y \
   git \
   cmake \
   ninja-build \
@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
   libclang-dev \
   libcrypto++-dev \
   lld \
+  gh \
+  unzip \
   sudo
 
 ENV HOME=/home
