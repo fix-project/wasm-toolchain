@@ -6,6 +6,8 @@ jobs:
   docker-build:
       runs-on: ubuntu-latest
       steps:
+        - name: Remove /opt/hostedtoolcache to reduce space
+          run: rm -rf /opt/hostedtoolcache
         - name: Checkout
           uses: actions/checkout@v2
         - name: Set up Docker Buildx
