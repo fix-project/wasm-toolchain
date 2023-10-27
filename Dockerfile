@@ -1,6 +1,6 @@
 FROM ubuntu:23.04
 
-RUN apt-get update && apt-get upgrade && apt-get install -y \
+RUN apt-get -y update && apt-get -y upgrade && apt-get install -y \
   git \
   cmake \
   ninja-build \
