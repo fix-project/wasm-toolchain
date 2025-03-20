@@ -45,7 +45,7 @@ cmake -S llvm -B build-libs -G Ninja -DLLVM_ENABLE_PROJECTS="clang;clang-tools-e
       -DRUNTIMES_wasm32-wasi_LIBCXXABI_BUILD_EXTERNAL_THREAD_LIBRARY:BOOL=OFF \
       -DRUNTIMES_wasm32-wasi_LIBCXX_CXX_ABI=libcxxabi -DRUNTIMES_wasm32-wasi_LIBCXX_ENABLE_SHARED:BOOL=OFF \
       -DRUNTIMES_wasm32-wasi_LIBCXXABI_ENABLE_SHARED:BOOL=OFF -DRUNTIMES_wasm32-wasi_CMAKE_SIZEOF_VOID_P=4 \
-      -DRUNTIMES_wasm32-wasi_CMAKE_CXX_FLAGS="-I${HOME}/wasm-toolchain/sysroot/wasix/include -D_LIBCPP_HAS_NO_EXCEPTIONS -D_LIBCXXABI_NO_EXCEPTIONS" \
+      -DRUNTIMES_wasm32-wasi_CMAKE_CXX_FLAGS="-I${INST}/wasix/include -D_LIBCPP_HAS_NO_EXCEPTIONS -D_LIBCXXABI_NO_EXCEPTIONS" \
       -DRUNTIMES_wasm32-wasi_LIBCXX_ABI_VERSION=2
 
 ninja -C build-libs install install-runtimes
@@ -69,7 +69,7 @@ cp -av sysroot/* ${INST}
 
 # compile and install wasix
 cd ${SRC}/wasix
-export WASI_SDK_PATH="${HOME}/wasm-toolchain/sysroot"
-export WASI_SYSROOT="${HOME}/wasm-toolchain/sysroot"
-export DESTDIR="${HOME}/wasm-toolchain/sysroot/wasix"
+export WASI_SDK_PATH="${INST}"
+export WASI_SYSROOT="${INST}"
+export DESTDIR="${INST}/wasix"
 make install
